@@ -2,6 +2,14 @@
 
 class core {
 	
+	private $Radio;
+	
+	function __construct($Radio) {
+		
+		$this->Radio = $Radio;
+		
+	}
+	
 	function radioStats($url) {
 		
 		$opts = array(
@@ -43,17 +51,31 @@ class core {
 			$return['currentsong'] = explode("</b>", $return['currentsong'][1]);
 			$return['currentsong'] = $return['currentsong'][0];
 				
-		}
-		else {
-				
-			$return['online'] = false;
-				
+		} else {
+			
+			$return['online'] = false;	
+			
 		}
 		
-		return $return;
+			return $return;
+		
 		} // END radioStats
+		
+		function showListeners() {
+			
+			$stats = $this->radioStats("http://{$this->Radio[0]}:{$this->Radio[1]}");
+			
+			if($stats['online']) {
+
+				return $stats['listeners'];
+				
+			} else {
+				
+				return 0;
+						
+			}
+			
+		} // end showListeners
 	
 
 }
-
-?>

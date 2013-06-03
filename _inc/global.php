@@ -20,6 +20,6 @@ include_once('_inc/session.inc.php');
 include_once('_inc/users.inc.php');
 
 $DB = new db($Mysql[0], $Mysql[1], $Mysql[2], $Mysql[3]);
-$Core = new core();
+$Core = new core($Radio);
 $Session = new session();
 $Users = new users($DB, $Session, $Salt);

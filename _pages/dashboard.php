@@ -111,6 +111,9 @@ $Users->checkLogin();
 								<li>
 									<a href="#">Change Skype</a>
 								</li>
+								<li>
+									<a href="#">Your Warnings</a>
+								</li>
 					</ul>
 				</li>
 				<li>
@@ -240,40 +243,9 @@ EOT;
 						
 						</li>
 			
-				<?php 
-				
-				$stats = $Core->radioStats("http://{$Radio[0]}:{$Radio[1]}");
-				
-				if($stats['online']) {
-					
-					echo <<<EOT
-					
-					
 						<li>
-							<a><img src="img/icons/statistics.png" alt="" /><span style="padding: 5px; background-color: white; color: black; border-radius: 5px;">Current Listeners </br> {$stats['listeners']}</span></a>
+							<a><img src="img/icons/statistics.png" alt="" /><span style="padding: 5px; background-color: white; color: black; border-radius: 5px;">Current Listeners </br> <?php echo $Core->showListeners(); ?></span></a>
 						</li>
-					
-					
-EOT;
-	
-				} else {
-					
-					echo <<<EOT
-			
-			
-						<li>
-							<a><img src="img/icons/statistics.png" alt="" /><span style="padding: 5px; background-color: white; color: black; border-radius: 5px;">Current Listeners </br> <strong>0</strong></span></a>
-						</li>
-			
-EOT;
-					
-					
-					
-				}
-				
-				
-				
-				?>
 				
 				<li>
 				
@@ -281,7 +253,7 @@ EOT;
 				<img src="scripts/headGen/head.php?habbo=<?php echo $Users->getHabbo($Session->getSession("username"));?>&hotel=UK" /> <br />
 				<b><?php echo $Users->getHabbo($Session->getSession("username"));?></b> <br />
 				<?php $Users->getRankName(); ?><br />
-				Warnings: <br />
+				Warnings: <font color="green"><b>0</b></font><br />
 				</div>
 				
 				</li>
