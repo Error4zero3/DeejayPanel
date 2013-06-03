@@ -12,7 +12,7 @@ $Salt = "6n3547Ko8I77414vxF8o167V7DE292uS"; // Change this for password hashing 
 
 
 
-/**       DO NOT EDIT BELOW              **/
+// DO NOT EDIT BELOW //
 
 include_once('_inc/db.inc.php');
 include_once('_inc/core.inc.php');

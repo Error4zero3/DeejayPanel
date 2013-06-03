@@ -4,8 +4,6 @@ include_once('_inc/global.php');
 
 $Users->checkLogin();
 
-//$Users->createNews("Some news title...", "Hey Pete, Hey Westie, Hey HFFM UK DJ's", $Session->getSession("username"));
-
 ?>
 <!doctype html>
 <html>
