@@ -244,7 +244,7 @@ EOT;
 			
 				<?php 
 				
-				$stats = $Core->radioStats("http://109.73.71.126:8000");
+				$stats = $Core->radioStats("http://{$Radio[0]}:{$Radio[1]}");
 				
 				if($stats['online']) {
 					
