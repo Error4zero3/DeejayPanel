@@ -227,7 +227,7 @@ EOT;
 		
 		if(!isset($_SESSION['username'])) {
 
-			header('Location: /DJ/DejayPanel/index');
+			header('Location: index');
 			exit;
 			return 0;
 			
