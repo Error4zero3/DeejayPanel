@@ -28,6 +28,25 @@ EOT;
 	
 }
 
+// END Login //
+
+// Delete News //
+
+if(isset($_GET['deleteNews'])) {
+	
+	if($Users->deleteNews($_GET['deleteNews']) != 0) {
+		
+		header('Location: dashboard');
+		exit;
+		
+	} else {
+		
+	}
+	
+}
+
+// END Delete News //
+
 
 
 

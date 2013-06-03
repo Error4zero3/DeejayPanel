@@ -38,9 +38,78 @@ class users {
 		
 	} // END register
 	
+	function getRankID($username) {
+		
+			$rankSQL = $this->Database->Query("select * from users where username='{$username}'");
+			
+			while($row = mysql_fetch_assoc($rankSQL)) {
+				
+				
+				return $row['rank'];
+				
+			}  
+	}
+	
+	function getHabbo($username) {
+		
+		$HabboSQL = $this->Database->Query("select * from users where username='{$username}'");
+		
+		while($row = mysql_fetch_assoc($HabboSQL)) {
+		
+		
+			return $row['habbo'];
+		
+		}
+		
+	}
+	
+	function getRankName() {
+		
+		if($this->getRankID($this->Session->getSession("username")) == 1) {
+			
+			echo "<span style='font-weight: bold; color: #45629F;'>Radio DJ</span>";
+	
+		}
+		
+		if($this->getRankID($this->Session->getSession("username")) == 2) {
+				
+			echo "<span style='font-weight: bold; color: #8450A7;'>Head DJ</span>";
+		
+		}
+		
+		if($this->getRankID($this->Session->getSession("username")) == 3) {
+				
+			echo "<span style='font-weight: bold; color: #4B9D2D;'>Management</span>";
+		
+		}
+		
+		if($this->getRankID($this->Session->getSession("username")) == 4) {
+				
+			echo "<span style='font-weight: bold; color: red;'>Administrator</span>";
+		
+		}
+		
+	}
+	
 	function logout() {
 		
 		session_destroy();
+		
+	}
+	
+	function deleteNews($id) {
+		
+		$id = $this->Database->Clean($id);
+		
+		if($this->getRankID($this->Session->getSession("username")) == 4) {
+			
+			$this->Database->Query("delete from home_news where ID='{$id}'");
+			return 1;
+			
+		} else {
+			
+			return 0;
+		}
 		
 	}
 	
@@ -64,10 +133,20 @@ class users {
 	
 	function showNews() {
 		
-		$sql = mysql_query("select * from home_news");
+		
+		$sql = mysql_query("select * from home_news order by ID DESC");
 		//$result = mysql_fetch_array($sql);
 			
 		while($rows = @mysql_fetch_assoc($sql)) {
+			
+			if($this->getRankID($this->Session->getSession("username")) == 4) {
+					
+				$delete = "<a href='index.php?deleteNews={$rows['ID']}' class='button button-basic-red'>DELETE</a>";
+					
+			} else {
+					
+				$delete = "";
+			}
 		
 			echo <<< EOT
 		
@@ -84,7 +163,7 @@ class users {
 								{$rows['content']}
 		
 								<br /><br />
-								<span style="float:right"><i>Author: DJ {$rows['author']} - {$rows['date']}</i></span>
+								<span style="float:right"><i>Author: DJ {$rows['author']} - {$rows['date']}</i> {$delete}</span>
 				
 							</div>
 						</div>

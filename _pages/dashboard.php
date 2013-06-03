@@ -4,6 +4,8 @@ include_once('_inc/global.php');
 
 $Users->checkLogin();
 
+//$Users->createNews("Some news title...", "Hey Pete, Hey Westie, Hey HFFM UK DJ's", $Session->getSession("username"));
+
 ?>
 <!doctype html>
 <html>
@@ -77,15 +79,6 @@ $Users->checkLogin();
 	<div id="top"> 
 		<div class="container-fluid">
 			<div class="pull-right">
-				<div class="btn-group">
-					<a href="#" class="button dropdown-toggle" data-toggle="dropdown"><i class="icon-white icon-user"></i>DJ <?php echo $Session->getSession("username");?><span class="caret"></span></a>
-					<div class="dropdown-menu pull-right">
-						<div class="right-details" style="padding: 15px;">
-							<span>Rank: </span> <br />
-							<span>Warnings: </span> <br />
-						</div>
-					</div>
-				</div>
 				<a href="logout" class="button">
 					<i class="icon-signout"></i>
 					Logout
@@ -95,12 +88,23 @@ $Users->checkLogin();
 	</div>
 
 	<div id="main">
-		<div id="navigation">
+		<div id="navigation" style="margin-top: 10px;">
 			<ul class="mainNav" data-open-subnavs="multi">
-				<li>
+				
+				<?php 
+				
+				if($Users->getRankID($Session->getSession("username")) >= 1) {
+					
+					echo <<< EOT
+					
+					
+						<li>
 					<a href="dashboard"><i class="icon-home icon-white"></i><span>Dashboard</span></a>
 					<ul class="subnav">
-						<li>
+								<li>
+									<a href="dashboard">Dashboard Home</a>
+								</li>
+								<li>
 									<a href="#">Change Password</a>
 								</li>
 								<li>
@@ -131,14 +135,41 @@ $Users->checkLogin();
 						</li>
 					</ul>
 				</li>
-				<li>
+					
+EOT;
+					
+					
+				}
+				
+				
+				if($Users->getRankID($Session->getSession("username")) >= 2) {
+					
+					echo <<<EOT
+					
+					<li>
+					<a><i class="icon-magic icon-white"></i><span>Head DJ</span></a>
+					<ul class="subnav">
+						<li>
+							<a href="djlist">DJ List</a>
+						</li>
+					</ul>
+				</li>
+					
+EOT;
+					
+					
+				}
+				
+				if($Users->getRankID($Session->getSession("username")) >= 3) {
+					
+					echo <<<EOT
+					
+					
+					<li>
 					<a><i class="icon-th-large icon-white"></i><span>Management</span></a>
 					<ul class="subnav">
 						<li>
 							<a href="adddj">Add new DJ</a>
-						</li>
-						<li>
-							<a href="editdj">Edit a DJ</a>
 						</li>
 						<li>
 							<a href="editradiodetails">Change radio details</a>
@@ -148,18 +179,40 @@ $Users->checkLogin();
 						</li>
 					</ul>
 				</li>
+					
+					
+					
+EOT;
+					
+					
+				}
 				
-				<li>
+				
+				if($Users->getRankID($Session->getSession("username")) >= 4) {
+					
+					echo <<<EOT
+					
+					
+					<li>
 					<a><i class="icon-warning-sign icon-white"></i><span>Administration</span></a>
 					<ul class="subnav">
 						<li>
 							<a href="addhomenews">Add home news</a>
 						</li>
 						<li>
-							<a href="userpromotions">User Promotions</a>
+							<a href="userpromotions">Management Promotions</a>
 						</li>
 					</ul>
 				</li>
+EOT;
+					
+					
+				}
+				
+				
+				?>
+				
+				
 				
 			</ul>
 			
@@ -223,6 +276,22 @@ EOT;
 				
 				
 				?>
+				
+				<li>
+				
+				<div style="padding: 10px; background-color: white; color: black; border-radius: 5px;">
+				<img src="scripts/headGen/head.php?habbo=<?php echo $Users->getHabbo($Session->getSession("username"));?>&hotel=UK" /> <br />
+				<b><?php echo $Users->getHabbo($Session->getSession("username"));?></b> <br />
+				<?php $Users->getRankName(); ?><br />
+				Warnings: <br />
+				</div>
+				
+				</li>
+				
+				
+				
+				
+				
 				
 					
 				</ul>	

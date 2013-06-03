@@ -1,10 +1,6 @@
 <?php
 ini_set('display_errors', '1');
 
-
-
-
-
 $Salt = "6n3547Ko8I77414vxF8o167V7DE292uS";
 
 include_once('_inc/db.inc.php');
