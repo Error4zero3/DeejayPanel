@@ -38,6 +38,24 @@ class users {
 		
 	} // END register
 	
+	function getWarnings($username) {
+		
+		$UserIDSQL = $this->Database->Query("select * from users where username='{$username}'");
+		
+		while($userid = mysql_fetch_assoc($UserIDSQL)) {
+			
+			$sql = $this->Database->Query("select UserID, sum(WarningScore) from users_warnings where UserID='{$userid['ID']}' group by UserID");
+			
+			while($sql2 = mysql_fetch_array($sql)) {
+				
+				return $sql2['sum(WarningScore)'];
+				
+			}
+			
+		}
+		
+	} // end getWarnings
+	
 	function getRankID($username) {
 		
 			$rankSQL = $this->Database->Query("select * from users where username='{$username}'");
@@ -48,7 +66,7 @@ class users {
 				return $row['rank'];
 				
 			}  
-	}
+	} // end getRankID
 	
 	function getHabbo($username) {
 		

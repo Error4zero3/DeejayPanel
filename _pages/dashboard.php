@@ -253,7 +253,7 @@ EOT;
 				<img src="scripts/headGen/head.php?habbo=<?php echo $Users->getHabbo($Session->getSession("username"));?>&hotel=UK" /> <br />
 				<b><?php echo $Users->getHabbo($Session->getSession("username"));?></b> <br />
 				<?php $Users->getRankName(); ?><br />
-				Warnings: <font color="green"><b>0</b></font><br />
+				Warnings: <?php echo $Users->getWarnings($Session->getSession("username")); ?><br />
 				</div>
 				
 				</li>

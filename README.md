@@ -6,7 +6,14 @@ Radio DJ Panel for Habbo fansites.
 *Note* There will be no database released for this project as of yet. Still need to make the project more useable.
 
 
-[LATEST] 03/06/2013
+
+[LATEST] 04/06/2013
+===========
+
+1. Added warnings
+1.1. Warnings displayed on dashboard (counted up from users warning scores in the users_warnings table
+
+03/06/2013
 ===========
 
 1. Updated Git
