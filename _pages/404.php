@@ -7,18 +7,18 @@
 <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 	
 	<!-- Bootstrap -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="template/main/css/bootstrap.min.css">
 	<!-- Bootstrap responsive -->
-	<link rel="stylesheet" href="css/bootstrap-responsive.min.css">
+	<link rel="stylesheet" href="template/main/css/bootstrap-responsive.min.css">
 	<!-- Theme CSS -->
 	<!--[if !IE]> -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="template/main/css/style.css">
 	<!-- <![endif]-->
 	<!--[if IE]>
-	<link rel="stylesheet" href="css/style_ie.css">
+	<link rel="stylesheet" href="template/main/css/style_ie.css">
 	<![endif]-->
-	<link rel="shortcut icon" href="favicon.ico" />
-	<link rel="apple-touch-icon-precomposed" href="apple-touch-icon-precomposed.png" />
+	<link rel="shortcut icon" href="template/main/favicon.ico" />
+	<link rel="template/main/apple-touch-icon-precomposed" href="template/main/apple-touch-icon-precomposed.png" />
 
 </head>
 

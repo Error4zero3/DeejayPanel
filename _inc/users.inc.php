@@ -38,6 +38,36 @@ class users {
 		
 	} // END register
 	
+	function getWarnings2($username) {
+		
+		$UserIDSQL = $this->Database->Query("select * from users where username='{$username}'");
+		
+		while($userid = mysql_fetch_assoc($UserIDSQL)) {
+		
+			$sql = $this->Database->Query("select * from users_warnings where UserID='{$userid['ID']}'");
+			
+			while($rows = mysql_fetch_assoc($sql)) {
+				
+				
+				echo <<<EOT
+				
+
+				
+				<tr>
+					<td>{$rows['Reason']}</td>
+					<td>{$rows['WarningScore']}</td>
+				</tr>
+				
+				
+EOT;
+				
+				
+			}
+		
+		}
+		
+	}
+	
 	function getWarnings($username) {
 		
 		$UserIDSQL = $this->Database->Query("select * from users where username='{$username}'");

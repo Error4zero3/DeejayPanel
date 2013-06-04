@@ -112,7 +112,7 @@ $Users->checkLogin();
 									<a href="#">Change Skype</a>
 								</li>
 								<li>
-									<a href="#">Your Warnings</a>
+									<a href="userwarnings">Your Warnings</a>
 								</li>
 					</ul>
 				</li>
@@ -171,6 +171,9 @@ EOT;
 					<ul class="subnav">
 						<li>
 							<a href="adddj">Add new DJ</a>
+						</li>
+						<li>
+							<a href="editdj">Edit a DJ</a>
 						</li>
 						<li>
 							<a href="editradiodetails">Change radio details</a>
